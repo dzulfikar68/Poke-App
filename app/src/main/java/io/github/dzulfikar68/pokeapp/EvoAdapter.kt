@@ -4,8 +4,15 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import io.github.dzulfikar68.pokeapp.databinding.ItemEvolutionsViewBinding
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class EvoAdapter : RecyclerView.Adapter<EvoAdapter.ViewHolder>() {
     var list = ArrayList<ChainEvo>()
@@ -31,18 +38,46 @@ class EvoAdapter : RecyclerView.Adapter<EvoAdapter.ViewHolder>() {
     class ViewHolder(private val binding: ItemEvolutionsViewBinding) : RecyclerView.ViewHolder(binding.root) {
         @SuppressLint("SetTextI18n")
         fun bind(item: ChainEvo) {
-            binding.tvEvo1.text = item.species?.name ?: "-"
-            binding.tvEvo2.text = try {
+            val text1 = item.species?.name ?: "-"
+            binding.tvEvo1.text = text1
+            if (text1 != "-") getImage(text1, binding.ivEvo1)
+
+            val text2 = try {
                 item.evolves_to?.get(0)?.species?.name ?: "-"
             } catch (e: Exception) {
                 "-"
             }
+            binding.tvEvo2.text = text2
+            if (text2 != "-") getImage(text2, binding.ivEvo2)
+
             val lv = try {
                 (item.evolves_to?.get(0)?.evolution_details?.get(0)?.min_level ?: 0).toString()
             } catch (e: Exception) {
                 "0"
             }
             binding.tvLevel.text = "Lv. $lv"
+        }
+
+        private fun getImage(name: String, imageView: ImageView) {
+            val retrofit = Retrofit.Builder()
+                .baseUrl("https://pokeapi.co/api/v2/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+            val service = retrofit.create(PokemonService::class.java)
+            service.getForm(name).enqueue(object : Callback<FormResponse> {
+                override fun onResponse(
+                    call: Call<FormResponse>,
+                    response: Response<FormResponse>
+                ) {
+                    val image = response.body()?.sprites?.front_default
+                    Glide.with(binding.root.context)
+                        .load(image)
+                        .into(imageView)
+                }
+
+                override fun onFailure(call: Call<FormResponse>, t: Throwable) {
+                }
+            })
         }
     }
 }

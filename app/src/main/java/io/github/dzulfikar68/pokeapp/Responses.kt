@@ -46,5 +46,15 @@ data class Sprites(
     val front_shiny: String? = null
 )
 
+data class AbilityResponse(
+    val effect_entries: List<EffectEntries>? = null
+)
+
+data class EffectEntries(
+    val short_effect: String? = null,
+    val effect: String? = null,
+    val language: Language? = null
+)
+
 //data class StatsResponse(
 //)

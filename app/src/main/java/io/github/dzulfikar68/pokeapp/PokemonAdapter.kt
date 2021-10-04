@@ -72,7 +72,7 @@ class PokemonAdapter : RecyclerView.Adapter<PokemonAdapter.MessageViewHolder>() 
                     call: Call<FormResponse>,
                     response: Response<FormResponse>
                 ) {
-                    val image = response.body()?.sprites?.front_shiny
+                    val image = response.body()?.sprites?.front_default
                     Glide.with(binding.root.context)
                         .load(image)
                         .into(binding.ivPoke)

@@ -17,6 +17,9 @@ interface PokemonService {
     @GET("evolution-chain/{id}")
     fun getEvolutionChain(@Path("id") id: Int): Call<EvolutionsResponse>
 
+    @GET("ability/{id}")
+    fun getAbility(@Path("id") id: Int): Call<AbilityResponse>
+
     //====================================================================
 
     @GET("evolution-trigger/{id}")
