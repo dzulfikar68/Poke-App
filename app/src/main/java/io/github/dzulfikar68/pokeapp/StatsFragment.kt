@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import io.github.dzulfikar68.pokeapp.databinding.FragmentStatsBinding
 
+
 class StatsFragment: Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
