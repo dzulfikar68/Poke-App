@@ -20,6 +20,12 @@ interface PokemonService {
     @GET("ability/{id}")
     fun getAbility(@Path("id") id: Int): Call<AbilityResponse>
 
+    @GET("egg-group/{id}")
+    fun getEggGroups(@Path("id") id: Int): Call<EggGroupsResponse>
+
+    @GET("gender/{id}")
+    fun getGender(@Path("id") id: Int): Call<GenderResponse>
+
     //====================================================================
 
     @GET("evolution-trigger/{id}")

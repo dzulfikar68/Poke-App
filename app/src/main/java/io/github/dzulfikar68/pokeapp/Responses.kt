@@ -56,5 +56,15 @@ data class EffectEntries(
     val language: Language? = null
 )
 
+data class EggGroupsResponse(
+    val id: Int? = null,
+    val name: String? = null
+)
+
+data class GenderResponse(
+    val id: Int? = null,
+    val name: String? = null
+)
+
 //data class StatsResponse(
 //)

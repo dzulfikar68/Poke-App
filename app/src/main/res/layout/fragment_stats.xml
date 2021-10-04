@@ -58,6 +58,13 @@
             android:orientation="vertical">
 
             <TextView
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Egg Group"/>
+
+            <TextView
+                android:id="@+id/tv_egg_group"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="1"/>
@@ -71,6 +78,13 @@
             android:orientation="vertical">
 
             <TextView
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hatch Time"/>
+
+            <TextView
+                android:id="@+id/tv_hatch_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="2"/>
@@ -84,6 +98,13 @@
             android:orientation="vertical">
 
             <TextView
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Gender"/>
+
+            <TextView
+                android:id="@+id/tv_gender"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="3"/>
@@ -100,6 +121,73 @@
         android:layout_height="wrap_content"
         android:text="Capture"/>
 
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Habitat"/>
+
+            <TextView
+                android:id="@+id/tv_habitat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Generation"/>
+
+            <TextView
+                android:id="@+id/tv_generation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Capture Rate"/>
+
+            <TextView
+                android:id="@+id/tv_capture_rate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
     <TextView
         android:layout_margin="20dp"
         android:textSize="25sp"
@@ -107,5 +195,52 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Sprites"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Normal"/>
+
+            <ImageView
+                android:id="@+id/iv_normal"
+                android:scaleType="centerCrop"
+                android:layout_width="100dp"
+                android:layout_height="100dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Shiny"/>
+
+            <ImageView
+                android:id="@+id/iv_shiny"
+                android:scaleType="centerCrop"
+                android:layout_width="100dp"
+                android:layout_height="100dp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
 
 </LinearLayout>

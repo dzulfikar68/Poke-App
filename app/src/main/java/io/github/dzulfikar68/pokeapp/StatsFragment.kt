@@ -32,7 +32,57 @@ class StatsFragment: Fragment() {
         val id = activity?.intent?.getIntExtra("id", 0) ?: 0
         if (id != 0) {
             getAbility(id)
+            getEggGroup(id)
+            getGender(id)
         }
+    }
+
+    private fun getEggGroup(id: Int) {
+        val retrofit = Retrofit.Builder()
+            .baseUrl("https://pokeapi.co/api/v2/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+        val service = retrofit.create(PokemonService::class.java)
+        service.getEggGroups(id).enqueue(object : Callback<EggGroupsResponse> {
+            override fun onResponse(
+                call: Call<EggGroupsResponse>,
+                response: Response<EggGroupsResponse>
+            ) {
+                try {
+                    val data = response.body()
+                    binding.tvEggGroup.text = data?.name
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+            }
+
+            override fun onFailure(call: Call<EggGroupsResponse>, t: Throwable) {
+            }
+        })
+    }
+
+    private fun getGender(id: Int) {
+        val retrofit = Retrofit.Builder()
+            .baseUrl("https://pokeapi.co/api/v2/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+        val service = retrofit.create(PokemonService::class.java)
+        service.getGender(id).enqueue(object : Callback<GenderResponse> {
+            override fun onResponse(
+                call: Call<GenderResponse>,
+                response: Response<GenderResponse>
+            ) {
+                try {
+                    val data = response.body()
+                    binding.tvGender.text = data?.name
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+            }
+
+            override fun onFailure(call: Call<GenderResponse>, t: Throwable) {
+            }
+        })
     }
 
     private fun getAbility(id: Int) {
