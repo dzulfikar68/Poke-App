@@ -12,7 +12,7 @@ interface PokemonService {
     fun getPokemonChar(@Path("id") id: Int): Call<CharPokemonResponse>
 
     @GET("pokemon-form/{name}")
-    fun getForm(@Path("name") name: String): Call<EvolutionsResponse>
+    fun getForm(@Path("name") name: String): Call<FormResponse>
 
     @GET("evolution-chain/{id}")
     fun getEvolutionChain(@Path("id") id: Int): Call<EvolutionsResponse>

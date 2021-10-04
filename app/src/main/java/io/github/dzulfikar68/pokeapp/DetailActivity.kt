@@ -4,6 +4,7 @@ import android.app.ProgressDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import com.bumptech.glide.Glide
 import io.github.dzulfikar68.pokeapp.databinding.ActivityDetailBinding
 import retrofit2.Call
 import retrofit2.Callback
@@ -22,10 +23,14 @@ class DetailActivity : AppCompatActivity() {
         binding.vpDesc.adapter = DescPagerAdapter(supportFragmentManager)
         binding.tlDesc.setupWithViewPager(binding.vpDesc)
 
-        getDetailItem()
+        val id = intent?.getIntExtra("id", 0) ?: 0
+        if (id != 0) getDetailItem(id)
+
+        val name = intent?.getStringExtra("name") ?: ""
+        if (name != "") getImage(name)
     }
 
-    private fun getDetailItem() {
+    private fun getDetailItem(id: Int) {
         val progressDialog = ProgressDialog(this)
         progressDialog.setTitle("Sedang Menunggu (Loading)")
         progressDialog.setCancelable(false)
@@ -36,7 +41,7 @@ class DetailActivity : AppCompatActivity() {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
         val service = retrofit.create(PokemonService::class.java)
-        service.getPokemonChar(2).enqueue(object : Callback<CharPokemonResponse> {
+        service.getPokemonChar(id).enqueue(object : Callback<CharPokemonResponse> {
             override fun onResponse(
                 call: Call<CharPokemonResponse>,
                 response: Response<CharPokemonResponse>
@@ -55,6 +60,28 @@ class DetailActivity : AppCompatActivity() {
                     "Terjadi Kesalahan",
                     Toast.LENGTH_SHORT
                 ).show()
+            }
+        })
+    }
+
+    private fun getImage(name: String) {
+        val retrofit = Retrofit.Builder()
+            .baseUrl("https://pokeapi.co/api/v2/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+        val service = retrofit.create(PokemonService::class.java)
+        service.getForm(name).enqueue(object : Callback<FormResponse> {
+            override fun onResponse(
+                call: Call<FormResponse>,
+                response: Response<FormResponse>
+            ) {
+                val image = response.body()?.sprites?.front_shiny
+                Glide.with(binding.root.context)
+                    .load(image)
+                    .into(binding.ivPoke)
+            }
+
+            override fun onFailure(call: Call<FormResponse>, t: Throwable) {
             }
         })
     }

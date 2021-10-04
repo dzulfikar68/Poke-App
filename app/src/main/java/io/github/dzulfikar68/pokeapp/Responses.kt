@@ -37,5 +37,14 @@ data class DetailEvo(
     val min_level: Int? = null
 )
 
+data class FormResponse(
+    val sprites: Sprites? = null
+)
+
+data class Sprites(
+    val front_default: String? = null,
+    val front_shiny: String? = null
+)
+
 //data class StatsResponse(
 //)

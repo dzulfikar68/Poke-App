@@ -47,7 +47,8 @@ class EvolutionsFragment : Fragment() {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
         val service = retrofit.create(PokemonService::class.java)
-        service.getEvolutionChain(2).enqueue(object : Callback<EvolutionsResponse> {
+        val id = activity?.intent?.getIntExtra("id", 0) ?: 0
+        service.getEvolutionChain(id).enqueue(object : Callback<EvolutionsResponse> {
             override fun onResponse(
                 call: Call<EvolutionsResponse>,
                 response: Response<EvolutionsResponse>

@@ -32,9 +32,17 @@ class EvoAdapter : RecyclerView.Adapter<EvoAdapter.ViewHolder>() {
         @SuppressLint("SetTextI18n")
         fun bind(item: ChainEvo) {
             binding.tvEvo1.text = item.species?.name ?: "-"
-            binding.tvEvo2.text = item.evolves_to?.get(0)?.species?.name ?: "-"
-            val lv = (item.evolves_to?.get(0)?.evolution_details?.get(0)?.min_level ?: 0).toString()
-            binding.tvLevel.text = "Level $lv"
+            binding.tvEvo2.text = try {
+                item.evolves_to?.get(0)?.species?.name ?: "-"
+            } catch (e: Exception) {
+                "-"
+            }
+            val lv = try {
+                (item.evolves_to?.get(0)?.evolution_details?.get(0)?.min_level ?: 0).toString()
+            } catch (e: Exception) {
+                "0"
+            }
+            binding.tvLevel.text = "Lv. $lv"
         }
     }
 }
