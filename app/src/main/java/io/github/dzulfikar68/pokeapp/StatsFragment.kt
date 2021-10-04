@@ -5,8 +5,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
 import io.github.dzulfikar68.pokeapp.databinding.FragmentStatsBinding
 import retrofit2.Call
 import retrofit2.Callback
@@ -30,10 +32,14 @@ class StatsFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val id = activity?.intent?.getIntExtra("id", 0) ?: 0
+        val name = activity?.intent?.getStringExtra("name") ?: ""
         if (id != 0) {
             getAbility(id)
             getEggGroup(id)
             getGender(id)
+        }
+        if (name != "") {
+            getImage(name)
         }
     }
 
@@ -109,6 +115,33 @@ class StatsFragment: Fragment() {
             }
 
             override fun onFailure(call: Call<AbilityResponse>, t: Throwable) {
+            }
+        })
+    }
+
+    private fun getImage(name: String) {
+        val retrofit = Retrofit.Builder()
+            .baseUrl("https://pokeapi.co/api/v2/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+        val service = retrofit.create(PokemonService::class.java)
+        service.getForm(name).enqueue(object : Callback<FormResponse> {
+            override fun onResponse(
+                call: Call<FormResponse>,
+                response: Response<FormResponse>
+            ) {
+                val imageNormal = response.body()?.sprites?.front_default
+                Glide.with(binding.root.context)
+                    .load(imageNormal)
+                    .into(binding.ivNormal)
+
+                val imageShiny = response.body()?.sprites?.front_shiny
+                Glide.with(binding.root.context)
+                    .load(imageShiny)
+                    .into(binding.ivShiny)
+            }
+
+            override fun onFailure(call: Call<FormResponse>, t: Throwable) {
             }
         })
     }
