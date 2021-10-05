@@ -63,14 +63,12 @@ class PokemonRepository constructor(private val remoteDataSource: RemoteDataSour
         return result
     }
 
-    override fun getPokemonGender(id: Int): LiveData<MainResponse<GenderResponse>> {
-        val result = MutableLiveData<MainResponse<GenderResponse>>()
+    override fun getPokemonGender(id: Int, callback: (MainResponse<GenderResponse>) -> Unit) {
         remoteDataSource.getPokemonGender(id, object : RemoteDataSource.PokemonGenderCallback {
             override fun onPokemonGenderReceived(pokemonResponses: MainResponse<GenderResponse>) {
-                result.postValue(pokemonResponses)
+                callback.invoke(pokemonResponses)
             }
         })
-        return result
     }
 
 }

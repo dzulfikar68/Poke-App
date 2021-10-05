@@ -1,6 +1,7 @@
 package io.github.dzulfikar68.pokeapp.viewmodel
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import io.github.dzulfikar68.pokeapp.model.*
 
@@ -17,6 +18,8 @@ class DetailViewModel(private val pokemonRepository: PokemonRepository) : ViewMo
     var pokemonAbility : LiveData<MainResponse<AbilityResponse>>? = null
     fun getPokemonAbility(id: Int) = run { pokemonAbility = pokemonRepository.getPokemonAbility(id) }
 
-    var pokemonGender : LiveData<MainResponse<GenderResponse>>? = null
-    fun getPokemonGender(id: Int) = run { pokemonGender = pokemonRepository.getPokemonGender(id) }
+    var pokemonGender = MutableLiveData<MainResponse<GenderResponse>>()
+    fun getPokemonGender(id: Int) = run { pokemonRepository.getPokemonGender(id) {
+        pokemonGender.postValue(it)
+    } }
 }

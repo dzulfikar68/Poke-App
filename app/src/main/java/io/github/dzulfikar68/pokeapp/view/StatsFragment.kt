@@ -23,6 +23,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class StatsFragment: Fragment() {
     private lateinit var binding: FragmentStatsBinding
+    private lateinit var viewModel: DetailViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -42,7 +43,7 @@ class StatsFragment: Fragment() {
             val name = activity?.intent?.getStringExtra("name") ?: ""
 
             val factory = ViewModelFactory.getInstance(requireActivity())
-            val viewModel = ViewModelProvider(it, factory)[DetailViewModel::class.java]
+            viewModel = ViewModelProvider(it, factory)[DetailViewModel::class.java]
 
             viewModel.pokemonDetail?.observe(requireActivity(), {
                 if (!it.isError) {
@@ -58,6 +59,7 @@ class StatsFragment: Fragment() {
                         eggGroup = eggGroup+it.name?.capitalizeWords()+"\n"
                     }
                     binding.tvEggGroup.text = eggGroup.trim()
+                    viewModel.getPokemonGender(data?.gender_rate ?: 3)
                 }
             })
             viewModel.pokemonForm?.observe(requireActivity(), {
