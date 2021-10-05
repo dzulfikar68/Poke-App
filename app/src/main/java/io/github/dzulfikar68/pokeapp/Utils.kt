@@ -6,6 +6,7 @@ import io.github.dzulfikar68.pokeapp.model.PokemonService
 import io.github.dzulfikar68.pokeapp.model.RemoteDataSource
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.*
 
 object Injection {
     fun provideRepository(context: Context): PokemonRepository {
@@ -24,3 +25,5 @@ object RetrofitClient {
         return retrofit.create(PokemonService::class.java)
     }
 }
+
+fun String.capitalizeWords(): String = split(" ").map { it.capitalize(Locale.getDefault()) }.joinToString(" ")

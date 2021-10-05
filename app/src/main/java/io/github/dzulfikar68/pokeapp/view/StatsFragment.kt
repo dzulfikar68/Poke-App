@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
+import io.github.dzulfikar68.pokeapp.capitalizeWords
 import io.github.dzulfikar68.pokeapp.databinding.FragmentStatsBinding
 import io.github.dzulfikar68.pokeapp.model.*
 import io.github.dzulfikar68.pokeapp.viewmodel.DetailViewModel
@@ -46,17 +47,17 @@ class StatsFragment: Fragment() {
             viewModel.pokemonDetail?.observe(requireActivity(), {
                 if (!it.isError) {
                     val data = it.data
-                    binding.tvGeneration.text = data?.generation?.name?.replace("-", " ")
-                    binding.tvHabitat.text = data?.habitat?.name?.replace("-", " ")
+                    binding.tvGeneration.text = data?.generation?.name?.replace("-", " ")?.capitalizeWords()?.trim()
+                    binding.tvHabitat.text = data?.habitat?.name?.replace("-", " ")?.capitalizeWords()
                     val hatch = data?.hatch_counter.toString()
                     binding.tvHatchTime.text = "$hatch Cycles"
                     val rate = data?.capture_rate.toString()
                     binding.tvCaptureRate.text = "$rate%"
                     var eggGroup = ""
                     data?.egg_groups?.forEach {
-                        eggGroup = eggGroup+it.name+"\n"
+                        eggGroup = eggGroup+it.name?.capitalizeWords()+"\n"
                     }
-                    binding.tvEggGroup.text = eggGroup
+                    binding.tvEggGroup.text = eggGroup.trim()
                 }
             })
             viewModel.pokemonForm?.observe(requireActivity(), {
@@ -88,7 +89,7 @@ class StatsFragment: Fragment() {
                 if (!it.isError) {
                     try {
                         val data = it.data
-                        binding.tvGender.text = data?.name
+                        binding.tvGender.text = data?.name?.capitalizeWords() ?: "-"
                     } catch (e: Exception) {
                         e.printStackTrace()
                     }

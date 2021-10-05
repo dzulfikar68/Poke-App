@@ -7,6 +7,7 @@ import android.view.MenuItem
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
+import io.github.dzulfikar68.pokeapp.capitalizeWords
 import io.github.dzulfikar68.pokeapp.model.CharPokemonResponse
 import io.github.dzulfikar68.pokeapp.model.FormResponse
 import io.github.dzulfikar68.pokeapp.model.PokemonService
@@ -58,7 +59,7 @@ class DetailActivity : AppCompatActivity() {
             } else {
                 val data = it.data
                 val desc = data?.flavor_text_entries?.find { it.language?.name == "en" }?.flavor_text
-                binding.tvDesc.text = desc
+                binding.tvDesc.text = desc?.capitalizeWords()
             }
         })
         viewModel.pokemonForm?.observe(this, {

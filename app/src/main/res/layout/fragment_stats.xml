@@ -9,6 +9,7 @@
         android:orientation="vertical">
 
         <TextView
+            android:paddingVertical="20dp"
             android:textColor="@android:color/holo_blue_bright"
             android:layout_margin="20dp"
             android:textSize="25sp"
@@ -40,6 +41,7 @@
             android:layout_height="wrap_content"/>
 
         <TextView
+            android:paddingVertical="20dp"
             android:textColor="@android:color/holo_blue_bright"
             android:layout_margin="20dp"
             android:textSize="25sp"
@@ -49,15 +51,20 @@
             android:text="Breeding"/>
 
         <LinearLayout
+            android:layout_marginBottom="20dp"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <LinearLayout
+                android:paddingVertical="10dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackground"
                 android:gravity="center"
                 android:layout_weight="1"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="vertical">
 
                 <TextView
@@ -71,7 +78,7 @@
                     android:id="@+id/tv_egg_group"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="1"/>
+                    android:text="-"/>
 
             </LinearLayout>
 
@@ -81,10 +88,14 @@
                 android:background="@android:color/darker_gray"/>
 
             <LinearLayout
+                android:paddingVertical="10dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackground"
                 android:gravity="center"
                 android:layout_weight="1"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="vertical">
 
                 <TextView
@@ -98,7 +109,7 @@
                     android:id="@+id/tv_hatch_time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="2"/>
+                    android:text="-"/>
 
             </LinearLayout>
 
@@ -108,10 +119,14 @@
                 android:background="@android:color/darker_gray"/>
 
             <LinearLayout
+                android:paddingVertical="10dp"
+                android:clickable="true"
+                android:focusable="true"
                 android:gravity="center"
+                android:foreground="?android:attr/selectableItemBackground"
                 android:layout_weight="1"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="vertical">
 
                 <TextView
@@ -125,13 +140,14 @@
                     android:id="@+id/tv_gender"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="3"/>
+                    android:text="-"/>
 
             </LinearLayout>
 
         </LinearLayout>
 
         <TextView
+            android:paddingVertical="20dp"
             android:textColor="@android:color/holo_blue_bright"
             android:layout_margin="20dp"
             android:textSize="25sp"
@@ -141,15 +157,20 @@
             android:text="Capture"/>
 
         <LinearLayout
+            android:layout_marginBottom="20dp"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <LinearLayout
+                android:paddingVertical="10dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackground"
                 android:gravity="center"
                 android:layout_weight="1"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="vertical">
 
                 <TextView
@@ -163,7 +184,7 @@
                     android:id="@+id/tv_habitat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="1"/>
+                    android:text="-"/>
 
             </LinearLayout>
 
@@ -173,10 +194,14 @@
                 android:background="@android:color/darker_gray"/>
 
             <LinearLayout
+                android:paddingVertical="10dp"
+                android:clickable="true"
+                android:focusable="true"
                 android:gravity="center"
                 android:layout_weight="1"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:layout_height="match_parent"
                 android:orientation="vertical">
 
                 <TextView
@@ -190,7 +215,7 @@
                     android:id="@+id/tv_generation"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="2"/>
+                    android:text="-"/>
 
             </LinearLayout>
 
@@ -200,10 +225,14 @@
                 android:background="@android:color/darker_gray"/>
 
             <LinearLayout
+                android:paddingVertical="10dp"
                 android:gravity="center"
                 android:layout_weight="1"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:layout_height="match_parent"
                 android:orientation="vertical">
 
                 <TextView
@@ -217,7 +246,7 @@
                     android:id="@+id/tv_capture_rate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="3"/>
+                    android:text="-"/>
 
             </LinearLayout>
 
@@ -225,6 +254,7 @@
 
         <TextView
             android:textColor="@android:color/holo_blue_bright"
+            android:paddingVertical="20dp"
             android:layout_margin="20dp"
             android:textSize="25sp"
             android:gravity="center"
@@ -233,11 +263,16 @@
             android:text="Sprites"/>
 
         <LinearLayout
+            android:layout_marginBottom="20dp"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <LinearLayout
+                android:paddingVertical="10dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackground"
                 android:gravity="center"
                 android:layout_weight="1"
                 android:layout_width="0dp"
@@ -260,6 +295,10 @@
             </LinearLayout>
 
             <LinearLayout
+                android:paddingVertical="10dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackground"
                 android:gravity="center"
                 android:layout_weight="1"
                 android:layout_width="0dp"

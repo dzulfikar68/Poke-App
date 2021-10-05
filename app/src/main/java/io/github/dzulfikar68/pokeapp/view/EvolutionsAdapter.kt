@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import io.github.dzulfikar68.pokeapp.capitalizeWords
 import io.github.dzulfikar68.pokeapp.databinding.ItemEvolutionsViewBinding
 import io.github.dzulfikar68.pokeapp.model.ChainEvo
 import io.github.dzulfikar68.pokeapp.model.FormResponse
@@ -42,7 +43,7 @@ class EvolutionsAdapter : RecyclerView.Adapter<EvolutionsAdapter.ViewHolder>() {
         @SuppressLint("SetTextI18n")
         fun bind(item: ChainEvo) {
             val text1 = item.species?.name ?: "-"
-            binding.tvEvo1.text = text1
+            binding.tvEvo1.text = text1.capitalizeWords()
             if (text1 != "-") getImage(text1, binding.ivEvo1)
 
             val text2 = try {
@@ -50,7 +51,7 @@ class EvolutionsAdapter : RecyclerView.Adapter<EvolutionsAdapter.ViewHolder>() {
             } catch (e: Exception) {
                 "-"
             }
-            binding.tvEvo2.text = text2
+            binding.tvEvo2.text = text2.capitalizeWords()
             if (text2 != "-") getImage(text2, binding.ivEvo2)
 
             val lv = try {
@@ -58,7 +59,7 @@ class EvolutionsAdapter : RecyclerView.Adapter<EvolutionsAdapter.ViewHolder>() {
             } catch (e: Exception) {
                 "0"
             }
-            binding.tvLevel.text = "Lv. $lv"
+            binding.tvLevel.text = "Min Lv. $lv"
         }
 
         private fun getImage(name: String, imageView: ImageView) {

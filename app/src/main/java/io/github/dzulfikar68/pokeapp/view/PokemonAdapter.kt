@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import io.github.dzulfikar68.pokeapp.capitalizeWords
 import io.github.dzulfikar68.pokeapp.model.FormResponse
 import io.github.dzulfikar68.pokeapp.model.ItemPokemon
 import io.github.dzulfikar68.pokeapp.model.PokemonService
@@ -41,7 +42,7 @@ class PokemonAdapter : RecyclerView.Adapter<PokemonAdapter.MessageViewHolder>() 
     class MessageViewHolder(private val binding: ItemPokemonViewBinding) : RecyclerView.ViewHolder(binding.root) {
         @SuppressLint("SetTextI18n")
         fun bind(item: ItemPokemon) {
-            binding.tvTitle.text = item.name
+            binding.tvTitle.text = item.name?.capitalizeWords()
             var pokemonId = 0
             try {
                 val listString = item.url?.split("/")
