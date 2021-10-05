@@ -57,6 +57,7 @@ class DetailActivity : AppCompatActivity() {
                 ).show()
             } else {
                 val data = it.data
+                binding.tvName.text = data?.name?.capitalizeWords()
                 val desc = data?.flavor_text_entries?.find { it.language?.name == "en" }?.flavor_text
                 binding.tvDesc.text = desc?.capitalizeWords()
             }

@@ -8,319 +8,371 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <TextView
-            android:paddingVertical="20dp"
-            android:textColor="@android:color/holo_blue_bright"
-            android:layout_margin="20dp"
-            android:textSize="25sp"
-            android:gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Abilities"/>
-
-        <TextView
-            android:textColor="@android:color/holo_blue_bright"
-            android:id="@+id/tv_title_ab"
-            android:text="Title"
-            android:layout_marginBottom="10dp"
-            android:layout_marginHorizontal="20dp"
-            android:textStyle="bold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-        <TextView
-            android:layout_marginHorizontal="20dp"
-            android:id="@+id/tv_desc_ab"
-            android:text="Description"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:visibility="gone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-        <TextView
-            android:paddingVertical="20dp"
-            android:textColor="@android:color/holo_blue_bright"
-            android:layout_margin="20dp"
-            android:textSize="25sp"
-            android:gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Breeding"/>
-
         <LinearLayout
-            android:layout_marginBottom="20dp"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <LinearLayout
-                android:paddingVertical="10dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:foreground="?android:attr/selectableItemBackground"
-                android:gravity="center"
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <TextView
-                    android:textColor="@android:color/holo_blue_bright"
-                    android:textStyle="bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Egg Group"/>
-
-                <TextView
-                    android:id="@+id/tv_egg_group"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="-"/>
-
-            </LinearLayout>
-
-            <View
-                android:layout_width="0.1dp"
-                android:layout_height="match_parent"
-                android:background="@android:color/darker_gray"/>
-
-            <LinearLayout
-                android:paddingVertical="10dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:foreground="?android:attr/selectableItemBackground"
-                android:gravity="center"
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <TextView
-                    android:textColor="@android:color/holo_blue_bright"
-                    android:textStyle="bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Hatch Time"/>
-
-                <TextView
-                    android:id="@+id/tv_hatch_time"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="-"/>
-
-            </LinearLayout>
-
-            <View
-                android:layout_width="0.1dp"
-                android:layout_height="match_parent"
-                android:background="@android:color/darker_gray"/>
-
-            <LinearLayout
-                android:paddingVertical="10dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:gravity="center"
-                android:foreground="?android:attr/selectableItemBackground"
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <TextView
-                    android:textColor="@android:color/holo_blue_bright"
-                    android:textStyle="bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Gender"/>
-
-                <TextView
-                    android:id="@+id/tv_gender"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="-"/>
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <TextView
-            android:paddingVertical="20dp"
-            android:textColor="@android:color/holo_blue_bright"
-            android:layout_margin="20dp"
-            android:textSize="25sp"
-            android:gravity="center"
+            android:background="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Capture"/>
+            android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_marginBottom="20dp"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <LinearLayout
-                android:paddingVertical="10dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:foreground="?android:attr/selectableItemBackground"
+            <TextView
+                android:paddingVertical="20dp"
+                android:textColor="@android:color/holo_blue_bright"
+                android:layout_margin="20dp"
+                android:textSize="25sp"
                 android:gravity="center"
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <TextView
-                    android:textColor="@android:color/holo_blue_bright"
-                    android:textStyle="bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Habitat"/>
-
-                <TextView
-                    android:id="@+id/tv_habitat"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="-"/>
-
-            </LinearLayout>
-
-            <View
-                android:layout_width="0.1dp"
-                android:layout_height="match_parent"
-                android:background="@android:color/darker_gray"/>
-
-            <LinearLayout
-                android:paddingVertical="10dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:gravity="center"
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:foreground="?android:attr/selectableItemBackground"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <TextView
-                    android:textColor="@android:color/holo_blue_bright"
-                    android:textStyle="bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Generation"/>
-
-                <TextView
-                    android:id="@+id/tv_generation"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="-"/>
-
-            </LinearLayout>
-
-            <View
-                android:layout_width="0.1dp"
-                android:layout_height="match_parent"
-                android:background="@android:color/darker_gray"/>
-
-            <LinearLayout
-                android:paddingVertical="10dp"
-                android:gravity="center"
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:foreground="?android:attr/selectableItemBackground"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <TextView
-                    android:textColor="@android:color/holo_blue_bright"
-                    android:textStyle="bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Capture Rate"/>
-
-                <TextView
-                    android:id="@+id/tv_capture_rate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="-"/>
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <TextView
-            android:textColor="@android:color/holo_blue_bright"
-            android:paddingVertical="20dp"
-            android:layout_margin="20dp"
-            android:textSize="25sp"
-            android:gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Sprites"/>
-
-        <LinearLayout
-            android:layout_marginBottom="20dp"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <LinearLayout
-                android:paddingVertical="10dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:foreground="?android:attr/selectableItemBackground"
-                android:gravity="center"
-                android:layout_weight="1"
-                android:layout_width="0dp"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:text="Abilities"/>
 
-                <TextView
-                    android:textColor="@android:color/holo_blue_bright"
-                    android:textStyle="bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Normal"/>
+            <TextView
+                android:textSize="15sp"
+                android:textColor="@android:color/holo_blue_bright"
+                android:id="@+id/tv_title_ab"
+                android:text="Title"
+                android:layout_marginBottom="10dp"
+                android:layout_marginHorizontal="20dp"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
-                <ImageView
-                    android:id="@+id/iv_normal"
-                    android:scaleType="centerCrop"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"/>
+            <TextView
+                android:layout_marginHorizontal="20dp"
+                android:id="@+id/tv_desc_ab"
+                android:textStyle="bold"
+                android:text="Description"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="17sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:paddingVertical="20dp"
+                android:textColor="@android:color/holo_blue_bright"
+                android:layout_margin="20dp"
+                android:textSize="25sp"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Breeding"/>
+
+            <LinearLayout
+                android:layout_marginBottom="20dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:paddingVertical="10dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:textSize="15sp"
+                        android:textColor="@android:color/holo_blue_bright"
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Egg Group"/>
+
+                    <TextView
+                        android:textSize="17sp"
+                        android:textColor="@android:color/darker_gray"
+                        android:id="@+id/tv_egg_group"
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="-"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="0.1dp"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/darker_gray"/>
+
+                <LinearLayout
+                    android:paddingVertical="10dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:textSize="15sp"
+                        android:textColor="@android:color/holo_blue_bright"
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Hatch Time"/>
+
+                    <TextView
+                        android:textSize="17sp"
+                        android:textStyle="bold"
+                        android:textColor="@android:color/darker_gray"
+                        android:id="@+id/tv_hatch_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="-"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="0.1dp"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/darker_gray"/>
+
+                <LinearLayout
+                    android:paddingVertical="10dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:textSize="15sp"
+                        android:textColor="@android:color/holo_blue_bright"
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Gender"/>
+
+                    <TextView
+                        android:textSize="17sp"
+                        android:textStyle="bold"
+                        android:textColor="@android:color/darker_gray"
+                        android:id="@+id/tv_gender"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="-"/>
+
+                </LinearLayout>
 
             </LinearLayout>
 
-            <LinearLayout
-                android:paddingVertical="10dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:foreground="?android:attr/selectableItemBackground"
+            <TextView
+                android:paddingVertical="20dp"
+                android:textColor="@android:color/holo_blue_bright"
+                android:layout_margin="20dp"
+                android:textSize="25sp"
                 android:gravity="center"
-                android:layout_weight="1"
-                android:layout_width="0dp"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:text="Capture"/>
 
-                <TextView
-                    android:textColor="@android:color/holo_blue_bright"
-                    android:textStyle="bold"
-                    android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_marginBottom="20dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:paddingVertical="10dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:textSize="15sp"
+                        android:textColor="@android:color/holo_blue_bright"
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Habitat"/>
+
+                    <TextView
+                        android:textSize="17sp"
+                        android:textStyle="bold"
+                        android:textColor="@android:color/darker_gray"
+                        android:id="@+id/tv_habitat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="-"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="0.1dp"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/darker_gray"/>
+
+                <LinearLayout
+                    android:paddingVertical="10dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:textSize="15sp"
+                        android:textColor="@android:color/holo_blue_bright"
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Generation"/>
+
+                    <TextView
+                        android:textColor="@android:color/darker_gray"
+                        android:textSize="17sp"
+                        android:textStyle="bold"
+                        android:id="@+id/tv_generation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="-"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="0.1dp"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/darker_gray"/>
+
+                <LinearLayout
+                    android:paddingVertical="10dp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:textSize="15sp"
+                        android:textColor="@android:color/holo_blue_bright"
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Capture Rate"/>
+
+                    <TextView
+                        android:textColor="@android:color/darker_gray"
+                        android:textSize="17sp"
+                        android:textStyle="bold"
+                        android:id="@+id/tv_capture_rate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="-"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:textStyle="bold"
+                android:textColor="@android:color/holo_blue_bright"
+                android:paddingVertical="20dp"
+                android:layout_margin="20dp"
+                android:textSize="25sp"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sprites"/>
+
+            <LinearLayout
+                android:layout_marginBottom="20dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:paddingVertical="10dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Shiny"/>
+                    android:orientation="vertical">
 
-                <ImageView
-                    android:id="@+id/iv_shiny"
-                    android:scaleType="centerCrop"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"/>
+                    <TextView
+                        android:textSize="15sp"
+                        android:textColor="@android:color/holo_blue_bright"
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Normal"/>
+
+                    <ImageView
+                        android:id="@+id/iv_normal"
+                        android:scaleType="centerCrop"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:paddingVertical="10dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:textSize="15sp"
+                        android:textColor="@android:color/holo_blue_bright"
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Shiny"/>
+
+                    <ImageView
+                        android:id="@+id/iv_shiny"
+                        android:scaleType="centerCrop"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"/>
+
+                </LinearLayout>
 
             </LinearLayout>
 
         </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/bg_bottom_rounded"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/purple_500"/>
 
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>
