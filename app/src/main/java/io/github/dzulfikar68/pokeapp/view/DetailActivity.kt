@@ -3,6 +3,7 @@ package io.github.dzulfikar68.pokeapp.view
 import android.app.ProgressDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
@@ -26,6 +27,9 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        supportActionBar?.title = "Detail Pokemon"
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val factory = ViewModelFactory.getInstance(this)
         viewModel = ViewModelProvider(this, factory)[DetailViewModel::class.java]
@@ -66,56 +70,11 @@ class DetailActivity : AppCompatActivity() {
         })
     }
 
-        //======================================================
-
-    private fun getDetail(id: Int) {
-        val retrofit = Retrofit.Builder()
-            .baseUrl("https://pokeapi.co/api/v2/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-        val service = retrofit.create(PokemonService::class.java)
-        service.getPokemonChar(id).enqueue(object : Callback<CharPokemonResponse> {
-            override fun onResponse(
-                call: Call<CharPokemonResponse>,
-                response: Response<CharPokemonResponse>
-            ) {
-                val data = response.body()
-                val listDesc = data?.descriptions ?: listOf()
-                val itemDesc = listDesc.find { it.language?.name == "en" }
-                binding.tvDesc.text = itemDesc?.description ?: "-"
-//                progressDialog.dismiss()
-            }
-
-            override fun onFailure(call: Call<CharPokemonResponse>, t: Throwable) {
-//                progressDialog.dismiss()
-                Toast.makeText(
-                    this@DetailActivity,
-                    "Terjadi Kesalahan",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-        })
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == android.R.id.home) {
+            finish()
+        }
+        return super.onOptionsItemSelected(item)
     }
 
-    private fun getImage(name: String) {
-        val retrofit = Retrofit.Builder()
-            .baseUrl("https://pokeapi.co/api/v2/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-        val service = retrofit.create(PokemonService::class.java)
-        service.getForm(name).enqueue(object : Callback<FormResponse> {
-            override fun onResponse(
-                    call: Call<FormResponse>,
-                    response: Response<FormResponse>
-            ) {
-                val image = response.body()?.sprites?.front_shiny
-                Glide.with(binding.root.context)
-                    .load(image)
-                    .into(binding.ivPoke)
-            }
-
-            override fun onFailure(call: Call<FormResponse>, t: Throwable) {
-            }
-        })
-    }
 }
