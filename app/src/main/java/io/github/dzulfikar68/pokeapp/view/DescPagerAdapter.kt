@@ -25,4 +25,5 @@ class DescPagerAdapter(fm: FragmentManager): FragmentPagerAdapter(fm){
             else -> "Evolutions"
         }
     }
+
 }

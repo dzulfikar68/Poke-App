@@ -5,6 +5,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class RemoteDataSource private constructor(private val services: PokemonService){
+
     companion object {
         @Volatile
         private var instance: RemoteDataSource? = null
@@ -169,19 +170,25 @@ class RemoteDataSource private constructor(private val services: PokemonService)
     interface PokemonListCallback {
         fun onPokemonListReceived(pokemonResponses: MainResponse<List<ItemPokemon>>)
     }
+
     interface PokemonDetailCallback {
         fun onPokemonDetailReceived(pokemonResponses: MainResponse<PokemonSpecies>)
     }
+
     interface PokemonFormCallback {
         fun onPokemonFormReceived(pokemonResponses: MainResponse<FormResponse>)
     }
+
     interface PokemonEvolutionsCallback {
         fun onPokemonEvolutionsReceived(pokemonResponses: MainResponse<EvolutionsResponse>)
     }
+
     interface PokemonAbilityCallback {
         fun onPokemonAbilityReceived(pokemonResponses: MainResponse<AbilityResponse>)
     }
+
     interface PokemonGenderCallback {
         fun onPokemonGenderReceived(pokemonResponses: MainResponse<GenderResponse>)
     }
+
 }

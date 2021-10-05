@@ -18,6 +18,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class EvolutionsAdapter : RecyclerView.Adapter<EvolutionsAdapter.ViewHolder>() {
+
     var list = ArrayList<ChainEvo>()
 
     @SuppressLint("NotifyDataSetChanged")
@@ -84,4 +85,5 @@ class EvolutionsAdapter : RecyclerView.Adapter<EvolutionsAdapter.ViewHolder>() {
             })
         }
     }
+
 }

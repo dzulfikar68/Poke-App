@@ -18,6 +18,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class PokemonAdapter : RecyclerView.Adapter<PokemonAdapter.MessageViewHolder>() {
+
     var list = ArrayList<ItemPokemon>()
 
     @SuppressLint("NotifyDataSetChanged")
@@ -87,4 +88,5 @@ class PokemonAdapter : RecyclerView.Adapter<PokemonAdapter.MessageViewHolder>() 
             })
         }
     }
+
 }

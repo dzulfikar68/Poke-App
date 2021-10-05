@@ -11,6 +11,7 @@ import io.github.dzulfikar68.pokeapp.databinding.ActivityHomeBinding
 import io.github.dzulfikar68.pokeapp.viewmodel.ViewModelFactory
 
 class HomeActivity : AppCompatActivity() {
+
     private lateinit var binding: ActivityHomeBinding
     private lateinit var pokemonAdapter: PokemonAdapter
 

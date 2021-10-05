@@ -31,6 +31,6 @@ class ViewModelFactory private constructor(private val repository: PokemonReposi
             }
             else -> throw Throwable("Unknown ViewModel class: " + modelClass.name)
         }
-
     }
+
 }

@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 
 class PokemonRepository constructor(private val remoteDataSource: RemoteDataSource): PokemonDataSource {
+
     companion object {
         @Volatile
         private var instance: PokemonRepository? = null

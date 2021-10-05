@@ -7,6 +7,7 @@ import android.os.CountDownTimer
 import io.github.dzulfikar68.pokeapp.R
 
 class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -23,4 +24,5 @@ class MainActivity : AppCompatActivity() {
         }
         timer.start()
     }
+
 }

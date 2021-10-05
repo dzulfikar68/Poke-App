@@ -5,6 +5,7 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface PokemonService {
+
     @GET("pokemon-species/")
     fun getPokemon(): Call<PokemonResponse>
 
@@ -23,19 +24,4 @@ interface PokemonService {
     @GET("pokemon-form/{name}")
     fun getForm(@Path("name") name: String): Call<FormResponse>
 
-    //=============================================================================
-
-    @GET("characteristic/{id}")
-    fun getPokemonChar(@Path("id") id: Int): Call<CharPokemonResponse>
-
-    @GET("egg-group/{id}")
-    fun getEggGroups(@Path("id") id: Int): Call<EggGroupsResponse>
-
-    //====================================================================
-
-    @GET("evolution-trigger/{id}")
-    fun getEvolutionTriggers(@Path("id") id: Int): Call<EvolutionsResponse>
-
-//    @GET("stat/{id}")
-//    fun getStats(@Path("id") id: Int): Call<StatsResponse>
 }

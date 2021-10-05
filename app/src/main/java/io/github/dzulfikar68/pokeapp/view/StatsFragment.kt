@@ -22,6 +22,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 
 class StatsFragment: Fragment() {
+
     private lateinit var binding: FragmentStatsBinding
     private lateinit var viewModel: DetailViewModel
 
@@ -99,4 +100,5 @@ class StatsFragment: Fragment() {
             })
         }
     }
+
 }

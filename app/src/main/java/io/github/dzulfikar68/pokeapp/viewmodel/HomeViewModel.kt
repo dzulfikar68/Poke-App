@@ -7,5 +7,7 @@ import io.github.dzulfikar68.pokeapp.model.MainResponse
 import io.github.dzulfikar68.pokeapp.model.PokemonRepository
 
 class HomeViewModel(private val pokemonRepository: PokemonRepository) : ViewModel() {
+
     fun getPokemonList(): LiveData<MainResponse<List<ItemPokemon>>> = pokemonRepository.getPokemonList()
+
 }

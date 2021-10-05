@@ -21,6 +21,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class DetailActivity : AppCompatActivity() {
+
     private lateinit var binding: ActivityDetailBinding
     private lateinit var viewModel: DetailViewModel
 
