@@ -1,10 +1,13 @@
-package io.github.dzulfikar68.pokeapp
+package io.github.dzulfikar68.pokeapp.view
 
 import android.app.ProgressDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.bumptech.glide.Glide
+import io.github.dzulfikar68.pokeapp.model.CharPokemonResponse
+import io.github.dzulfikar68.pokeapp.model.FormResponse
+import io.github.dzulfikar68.pokeapp.model.PokemonService
 import io.github.dzulfikar68.pokeapp.databinding.ActivityDetailBinding
 import retrofit2.Call
 import retrofit2.Callback
@@ -43,8 +46,8 @@ class DetailActivity : AppCompatActivity() {
         val service = retrofit.create(PokemonService::class.java)
         service.getPokemonChar(id).enqueue(object : Callback<CharPokemonResponse> {
             override fun onResponse(
-                call: Call<CharPokemonResponse>,
-                response: Response<CharPokemonResponse>
+                    call: Call<CharPokemonResponse>,
+                    response: Response<CharPokemonResponse>
             ) {
                 val data = response.body()
                 val listDesc = data?.descriptions ?: listOf()
@@ -72,8 +75,8 @@ class DetailActivity : AppCompatActivity() {
         val service = retrofit.create(PokemonService::class.java)
         service.getForm(name).enqueue(object : Callback<FormResponse> {
             override fun onResponse(
-                call: Call<FormResponse>,
-                response: Response<FormResponse>
+                    call: Call<FormResponse>,
+                    response: Response<FormResponse>
             ) {
                 val image = response.body()?.sprites?.front_shiny
                 Glide.with(binding.root.context)

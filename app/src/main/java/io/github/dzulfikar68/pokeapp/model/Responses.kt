@@ -1,4 +1,10 @@
-package io.github.dzulfikar68.pokeapp
+package io.github.dzulfikar68.pokeapp.model
+
+data class MainResponse<T>(
+    val isError: Boolean = false,
+    val message: String? = null,
+    val data: T? = null
+)
 
 data class ItemPokemon(
     val name: String? = null,
@@ -9,8 +15,12 @@ data class PokemonResponse(
     val results: List<ItemPokemon>? = null
 )
 
+data class PokemonItemResponse(
+    val results: List<ItemPokemon>? = null
+)
+
 data class CharPokemonResponse(
-    val descriptions: List<CharPokemon>? = null,
+        val descriptions: List<CharPokemon>? = null,
 )
 
 data class CharPokemon(
@@ -23,18 +33,18 @@ data class Language(
 )
 
 data class EvolutionsResponse(
-    val chain: ChainEvo? = null,
+        val chain: ChainEvo? = null,
 )
 
 data class ChainEvo(
-    val species: ItemPokemon? = null,
-    val evolves_to: List<ChainEvo>? = null,
-    val evolution_details: List<DetailEvo>? = null
+        val species: ItemPokemon? = null,
+        val evolves_to: List<ChainEvo>? = null,
+        val evolution_details: List<DetailEvo>? = null
 )
 
 data class DetailEvo(
-    val trigger: ItemPokemon? = null,
-    val min_level: Int? = null
+        val trigger: ItemPokemon? = null,
+        val min_level: Int? = null
 )
 
 data class FormResponse(

@@ -1,4 +1,4 @@
-package io.github.dzulfikar68.pokeapp
+package io.github.dzulfikar68.pokeapp.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,12 +7,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import io.github.dzulfikar68.pokeapp.databinding.FragmentEvolutionsBinding
+import io.github.dzulfikar68.pokeapp.model.EvolutionsResponse
+import io.github.dzulfikar68.pokeapp.model.PokemonService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-
 
 class EvolutionsFragment : Fragment() {
 
@@ -50,8 +51,8 @@ class EvolutionsFragment : Fragment() {
         val id = activity?.intent?.getIntExtra("id", 0) ?: 0
         service.getEvolutionChain(id).enqueue(object : Callback<EvolutionsResponse> {
             override fun onResponse(
-                call: Call<EvolutionsResponse>,
-                response: Response<EvolutionsResponse>
+                    call: Call<EvolutionsResponse>,
+                    response: Response<EvolutionsResponse>
             ) {
                 val data = response.body()
                 val list = data?.chain?.evolves_to ?: listOf()

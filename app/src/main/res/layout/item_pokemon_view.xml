@@ -3,12 +3,15 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="10dp">
+    android:padding="10dp"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <ImageView
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:scaleType="centerCrop"
+        android:layout_marginEnd="10dp"
+        tools:src="@drawable/ic_launcher_background"
         android:id="@+id/iv_poke"/>
 
     <LinearLayout

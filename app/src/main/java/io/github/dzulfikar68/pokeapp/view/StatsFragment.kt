@@ -1,15 +1,13 @@
-package io.github.dzulfikar68.pokeapp
+package io.github.dzulfikar68.pokeapp.view
 
-import android.app.ProgressDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import io.github.dzulfikar68.pokeapp.databinding.FragmentStatsBinding
+import io.github.dzulfikar68.pokeapp.model.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -51,8 +49,8 @@ class StatsFragment: Fragment() {
         val service = retrofit.create(PokemonService::class.java)
         service.getEggGroups(id).enqueue(object : Callback<EggGroupsResponse> {
             override fun onResponse(
-                call: Call<EggGroupsResponse>,
-                response: Response<EggGroupsResponse>
+                    call: Call<EggGroupsResponse>,
+                    response: Response<EggGroupsResponse>
             ) {
                 try {
                     val data = response.body()
@@ -75,8 +73,8 @@ class StatsFragment: Fragment() {
         val service = retrofit.create(PokemonService::class.java)
         service.getGender(id).enqueue(object : Callback<GenderResponse> {
             override fun onResponse(
-                call: Call<GenderResponse>,
-                response: Response<GenderResponse>
+                    call: Call<GenderResponse>,
+                    response: Response<GenderResponse>
             ) {
                 try {
                     val data = response.body()
@@ -99,8 +97,8 @@ class StatsFragment: Fragment() {
         val service = retrofit.create(PokemonService::class.java)
         service.getAbility(id).enqueue(object : Callback<AbilityResponse> {
             override fun onResponse(
-                call: Call<AbilityResponse>,
-                response: Response<AbilityResponse>
+                    call: Call<AbilityResponse>,
+                    response: Response<AbilityResponse>
             ) {
                 try {
                     val data = response.body()
@@ -127,8 +125,8 @@ class StatsFragment: Fragment() {
         val service = retrofit.create(PokemonService::class.java)
         service.getForm(name).enqueue(object : Callback<FormResponse> {
             override fun onResponse(
-                call: Call<FormResponse>,
-                response: Response<FormResponse>
+                    call: Call<FormResponse>,
+                    response: Response<FormResponse>
             ) {
                 val imageNormal = response.body()?.sprites?.front_default
                 Glide.with(binding.root.context)

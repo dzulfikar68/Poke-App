@@ -1,12 +1,14 @@
-package io.github.dzulfikar68.pokeapp
+package io.github.dzulfikar68.pokeapp.view
 
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import io.github.dzulfikar68.pokeapp.model.FormResponse
+import io.github.dzulfikar68.pokeapp.model.ItemPokemon
+import io.github.dzulfikar68.pokeapp.model.PokemonService
 import io.github.dzulfikar68.pokeapp.databinding.ItemPokemonViewBinding
 import retrofit2.Call
 import retrofit2.Callback
@@ -69,8 +71,8 @@ class PokemonAdapter : RecyclerView.Adapter<PokemonAdapter.MessageViewHolder>() 
             val service = retrofit.create(PokemonService::class.java)
             service.getForm(name).enqueue(object : Callback<FormResponse> {
                 override fun onResponse(
-                    call: Call<FormResponse>,
-                    response: Response<FormResponse>
+                        call: Call<FormResponse>,
+                        response: Response<FormResponse>
                 ) {
                     val image = response.body()?.sprites?.front_default
                     Glide.with(binding.root.context)

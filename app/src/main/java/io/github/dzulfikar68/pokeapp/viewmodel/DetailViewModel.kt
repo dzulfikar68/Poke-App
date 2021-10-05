@@ -1,4 +1,4 @@
-package io.github.dzulfikar68.pokeapp
+package io.github.dzulfikar68.pokeapp.viewmodel
 
 import androidx.lifecycle.ViewModel
 

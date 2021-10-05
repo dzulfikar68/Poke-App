@@ -1,4 +1,4 @@
-package io.github.dzulfikar68.pokeapp
+package io.github.dzulfikar68.pokeapp.view
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager

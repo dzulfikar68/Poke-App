@@ -1,4 +1,4 @@
-package io.github.dzulfikar68.pokeapp
+package io.github.dzulfikar68.pokeapp.model
 
 import retrofit2.Call
 import retrofit2.http.GET
@@ -7,6 +7,9 @@ import retrofit2.http.Path
 interface PokemonService {
     @GET("pokemon-species/")
     fun getPokemon(): Call<PokemonResponse>
+
+    @GET("pokemon-species/{id}")
+    fun getPokemonItem(): Call<PokemonItemResponse>
 
     @GET("characteristic/{id}")
     fun getPokemonChar(@Path("id") id: Int): Call<CharPokemonResponse>
