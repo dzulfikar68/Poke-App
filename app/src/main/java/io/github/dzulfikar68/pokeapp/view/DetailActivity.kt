@@ -41,6 +41,8 @@ class DetailActivity : AppCompatActivity() {
         if (id != 0) {
             viewModel.getPokemonDetail(id)
             viewModel.getPokemonEvolutions(id)
+            viewModel.getPokemonAbility(id)
+            viewModel.getPokemonGender(id)
         }
 
         val name = intent?.getStringExtra("name") ?: ""

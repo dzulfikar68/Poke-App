@@ -62,73 +62,38 @@ class StatsFragment: Fragment() {
             viewModel.pokemonForm?.observe(requireActivity(), {
                 if (!it.isError) {
                     val data = it.data
-                    binding.ivNormal
                     Glide.with(binding.root.context)
                         .load(data?.sprites?.front_default)
                         .into(binding.ivNormal)
-                    binding.ivShiny
                     Glide.with(binding.root.context)
                         .load(data?.sprites?.front_shiny)
                         .into(binding.ivShiny)
                 }
             })
-
-//            if (id != 0) {
-                getAbility(id)
-                getGender(id)
-//            }
-        }
-    }
-
-    private fun getGender(id: Int) {
-        val retrofit = Retrofit.Builder()
-            .baseUrl("https://pokeapi.co/api/v2/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-        val service = retrofit.create(PokemonService::class.java)
-        service.getGender(id).enqueue(object : Callback<GenderResponse> {
-            override fun onResponse(
-                    call: Call<GenderResponse>,
-                    response: Response<GenderResponse>
-            ) {
-                try {
-                    val data = response.body()
-                    binding.tvGender.text = data?.name
-                } catch (e: Exception) {
-                    e.printStackTrace()
-                }
-            }
-
-            override fun onFailure(call: Call<GenderResponse>, t: Throwable) {
-            }
-        })
-    }
-
-    private fun getAbility(id: Int) {
-        val retrofit = Retrofit.Builder()
-            .baseUrl("https://pokeapi.co/api/v2/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-        val service = retrofit.create(PokemonService::class.java)
-        service.getAbility(id).enqueue(object : Callback<AbilityResponse> {
-            override fun onResponse(
-                    call: Call<AbilityResponse>,
-                    response: Response<AbilityResponse>
-            ) {
-                try {
-                    val data = response.body()
-                    val effects = data?.effect_entries
-                    effects?.find { it.language?.name == "en" }?.let {
-                        binding.tvTitleAb.text = it.short_effect ?: "-"
-                        binding.tvDescAb.text = it.effect ?: "-"
+            viewModel.pokemonAbility?.observe(requireActivity(), {
+                if (!it.isError) {
+                    try {
+                        val data = it.data
+                        val effects = data?.effect_entries
+                        effects?.find { it.language?.name == "en" }?.let {
+                            binding.tvTitleAb.text = it.short_effect ?: "-"
+                            binding.tvDescAb.text = it.effect ?: "-"
+                        }
+                    } catch (e: Exception) {
+                        e.printStackTrace()
                     }
-                } catch (e: Exception) {
-                    e.printStackTrace()
                 }
-            }
-
-            override fun onFailure(call: Call<AbilityResponse>, t: Throwable) {
-            }
-        })
+            })
+            viewModel.pokemonGender?.observe(requireActivity(), {
+                if (!it.isError) {
+                    try {
+                        val data = it.data
+                        binding.tvGender.text = data?.name
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+                    }
+                }
+            })
+        }
     }
 }

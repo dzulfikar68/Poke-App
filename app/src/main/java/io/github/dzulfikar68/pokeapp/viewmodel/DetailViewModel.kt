@@ -13,4 +13,10 @@ class DetailViewModel(private val pokemonRepository: PokemonRepository) : ViewMo
 
     var pokemonEvolutions : LiveData<MainResponse<EvolutionsResponse>>? = null
     fun getPokemonEvolutions(id: Int) = run { pokemonEvolutions = pokemonRepository.getPokemonEvolutions(id) }
+
+    var pokemonAbility : LiveData<MainResponse<AbilityResponse>>? = null
+    fun getPokemonAbility(id: Int) = run { pokemonAbility = pokemonRepository.getPokemonAbility(id) }
+
+    var pokemonGender : LiveData<MainResponse<GenderResponse>>? = null
+    fun getPokemonGender(id: Int) = run { pokemonGender = pokemonRepository.getPokemonGender(id) }
 }

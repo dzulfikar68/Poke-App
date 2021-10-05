@@ -116,6 +116,56 @@ class RemoteDataSource private constructor(private val services: PokemonService)
         })
     }
 
+    fun getPokemonAbility(id: Int, callback: PokemonAbilityCallback) {
+        services.getAbility(id).enqueue(object: Callback<AbilityResponse> {
+            override fun onResponse(
+                call: Call<AbilityResponse>,
+                response: Response<AbilityResponse>
+            ) {
+                val data = response.body()
+                val res = MainResponse(
+                    isError = false,
+                    message = response.message(),
+                    data = data
+                )
+                callback.onPokemonAbilityReceived(res)
+            }
+            override fun onFailure(call: Call<AbilityResponse>, t: Throwable) {
+                val res = MainResponse<AbilityResponse>(
+                    isError = true,
+                    message = t.localizedMessage,
+                    data = null
+                )
+                callback.onPokemonAbilityReceived(res)
+            }
+        })
+    }
+
+    fun getPokemonGender(id: Int, callback: PokemonGenderCallback) {
+        services.getGender(id).enqueue(object: Callback<GenderResponse> {
+            override fun onResponse(
+                call: Call<GenderResponse>,
+                response: Response<GenderResponse>
+            ) {
+                val data = response.body()
+                val res = MainResponse(
+                    isError = false,
+                    message = response.message(),
+                    data = data
+                )
+                callback.onPokemonGenderReceived(res)
+            }
+            override fun onFailure(call: Call<GenderResponse>, t: Throwable) {
+                val res = MainResponse<GenderResponse>(
+                    isError = true,
+                    message = t.localizedMessage,
+                    data = null
+                )
+                callback.onPokemonGenderReceived(res)
+            }
+        })
+    }
+
     interface PokemonListCallback {
         fun onPokemonListReceived(pokemonResponses: MainResponse<List<ItemPokemon>>)
     }
@@ -127,5 +177,11 @@ class RemoteDataSource private constructor(private val services: PokemonService)
     }
     interface PokemonEvolutionsCallback {
         fun onPokemonEvolutionsReceived(pokemonResponses: MainResponse<EvolutionsResponse>)
+    }
+    interface PokemonAbilityCallback {
+        fun onPokemonAbilityReceived(pokemonResponses: MainResponse<AbilityResponse>)
+    }
+    interface PokemonGenderCallback {
+        fun onPokemonGenderReceived(pokemonResponses: MainResponse<GenderResponse>)
     }
 }
