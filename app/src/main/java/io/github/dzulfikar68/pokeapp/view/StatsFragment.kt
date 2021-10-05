@@ -74,35 +74,10 @@ class StatsFragment: Fragment() {
             })
 
 //            if (id != 0) {
-//                getAbility(id)
-//                getEggGroup(id)
+                getAbility(id)
                 getGender(id)
 //            }
         }
-    }
-
-    private fun getEggGroup(id: Int) {
-        val retrofit = Retrofit.Builder()
-            .baseUrl("https://pokeapi.co/api/v2/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-        val service = retrofit.create(PokemonService::class.java)
-        service.getEggGroups(id).enqueue(object : Callback<EggGroupsResponse> {
-            override fun onResponse(
-                    call: Call<EggGroupsResponse>,
-                    response: Response<EggGroupsResponse>
-            ) {
-                try {
-                    val data = response.body()
-                    binding.tvEggGroup.text = data?.name
-                } catch (e: Exception) {
-                    e.printStackTrace()
-                }
-            }
-
-            override fun onFailure(call: Call<EggGroupsResponse>, t: Throwable) {
-            }
-        })
     }
 
     private fun getGender(id: Int) {
