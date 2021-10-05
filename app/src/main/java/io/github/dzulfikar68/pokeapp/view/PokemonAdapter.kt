@@ -19,10 +19,11 @@ import retrofit2.converter.gson.GsonConverterFactory
 class PokemonAdapter : RecyclerView.Adapter<PokemonAdapter.MessageViewHolder>() {
     var list = ArrayList<ItemPokemon>()
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setList(messages: List<ItemPokemon>) {
         this.list.clear()
         this.list.addAll(messages)
-        notifyDataSetChanged()
+        this.notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MessageViewHolder {
@@ -41,19 +42,19 @@ class PokemonAdapter : RecyclerView.Adapter<PokemonAdapter.MessageViewHolder>() 
         @SuppressLint("SetTextI18n")
         fun bind(item: ItemPokemon) {
             binding.tvTitle.text = item.name
-            binding.tvDesc.text = item.url
-            var idPokemeon = 0
+            var pokemonId = 0
             try {
                 val listString = item.url?.split("/")
-                idPokemeon = (listString?.get(6) ?: "0").toInt()
+                pokemonId = (listString?.get(6) ?: "0").toInt()
             } catch (e: Exception) {
                 e.printStackTrace()
             }
+            binding.tvDesc.text = "#$pokemonId"
             itemView.setOnClickListener {
                 val ctx = binding.root.context
                 ctx.startActivity(
                     Intent(ctx, DetailActivity::class.java)
-                        .putExtra("id", idPokemeon)
+                        .putExtra("id", pokemonId)
                         .putExtra("name", item.name)
                         .putExtra("url", item.url)
                 )

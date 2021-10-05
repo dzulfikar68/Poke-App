@@ -16,13 +16,14 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class EvoAdapter : RecyclerView.Adapter<EvoAdapter.ViewHolder>() {
+class EvolutionsAdapter : RecyclerView.Adapter<EvolutionsAdapter.ViewHolder>() {
     var list = ArrayList<ChainEvo>()
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setList(lists: List<ChainEvo>) {
         this.list.clear()
         this.list.addAll(lists)
-        notifyDataSetChanged()
+        this.notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

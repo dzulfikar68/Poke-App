@@ -14,12 +14,43 @@ class PokemonRepository constructor(private val remoteDataSource: RemoteDataSour
     }
 
     override fun getPokemonList(): LiveData<MainResponse<List<ItemPokemon>>> {
-        val movieResult = MutableLiveData<MainResponse<List<ItemPokemon>>>()
+        val result = MutableLiveData<MainResponse<List<ItemPokemon>>>()
         remoteDataSource.getPokemonList(object : RemoteDataSource.PokemonListCallback {
             override fun onPokemonListReceived(pokemonResponses: MainResponse<List<ItemPokemon>>) {
-                movieResult.postValue(pokemonResponses)
+                result.postValue(pokemonResponses)
             }
         })
-        return movieResult
+        return result
     }
+
+    override fun getPokemonDetail(id: Int): LiveData<MainResponse<PokemonSpecies>> {
+        val result = MutableLiveData<MainResponse<PokemonSpecies>>()
+        remoteDataSource.getPokemonDetail(id, object : RemoteDataSource.PokemonDetailCallback {
+            override fun onPokemonDetailReceived(pokemonResponses: MainResponse<PokemonSpecies>) {
+                result.postValue(pokemonResponses)
+            }
+        })
+        return result
+    }
+
+    override fun getPokemonForm(name: String): LiveData<MainResponse<FormResponse>> {
+        val result = MutableLiveData<MainResponse<FormResponse>>()
+        remoteDataSource.getPokemonForm(name, object : RemoteDataSource.PokemonFormCallback {
+            override fun onPokemonFormReceived(pokemonResponses: MainResponse<FormResponse>) {
+                result.postValue(pokemonResponses)
+            }
+        })
+        return result
+    }
+
+    override fun getPokemonEvolutions(id: Int): LiveData<MainResponse<EvolutionsResponse>> {
+        val result = MutableLiveData<MainResponse<EvolutionsResponse>>()
+        remoteDataSource.getPokemonEvolutions(id, object : RemoteDataSource.PokemonEvolutionsCallback {
+            override fun onPokemonEvolutionsReceived(pokemonResponses: MainResponse<EvolutionsResponse>) {
+                result.postValue(pokemonResponses)
+            }
+        })
+        return result
+    }
+
 }

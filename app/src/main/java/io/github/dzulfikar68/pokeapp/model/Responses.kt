@@ -15,9 +15,28 @@ data class PokemonResponse(
     val results: List<ItemPokemon>? = null
 )
 
-data class PokemonItemResponse(
-    val results: List<ItemPokemon>? = null
+data class PokemonSpecies(
+    val id: Int? = null,
+    val name: String? = null,
+    val hatch_counter: Int? = null,
+    val base_happiness: Int? = null,
+    val capture_rate: Int? = null,
+    val generation: ItemPokemon? = null,
+    val egg_groups: List<ItemPokemon>? = null,
+    val gender_rate: Int? = null,
+    val growth_rate: ItemPokemon? = null,
+    val habitat: ItemPokemon? = null,
+    val color: ItemPokemon? = null,
+    val evolution_chain: ItemPokemon? = null,
+    val flavor_text_entries: List<FlavorTextEntries>? = null,
 )
+
+data class FlavorTextEntries(
+    val flavor_text: String? = null,
+    val language: Language? = null
+)
+
+//===========================================================
 
 data class CharPokemonResponse(
         val descriptions: List<CharPokemon>? = null,

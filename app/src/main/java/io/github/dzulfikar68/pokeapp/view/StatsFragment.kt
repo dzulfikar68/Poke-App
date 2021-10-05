@@ -1,13 +1,18 @@
 package io.github.dzulfikar68.pokeapp.view
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import io.github.dzulfikar68.pokeapp.databinding.FragmentStatsBinding
 import io.github.dzulfikar68.pokeapp.model.*
+import io.github.dzulfikar68.pokeapp.viewmodel.DetailViewModel
+import io.github.dzulfikar68.pokeapp.viewmodel.ViewModelFactory
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -27,17 +32,52 @@ class StatsFragment: Fragment() {
         return binding.root
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val id = activity?.intent?.getIntExtra("id", 0) ?: 0
-        val name = activity?.intent?.getStringExtra("name") ?: ""
-        if (id != 0) {
-            getAbility(id)
-            getEggGroup(id)
-            getGender(id)
-        }
-        if (name != "") {
-            getImage(name)
+
+        activity?.let {
+            val id = activity?.intent?.getIntExtra("id", 0) ?: 0
+            val name = activity?.intent?.getStringExtra("name") ?: ""
+
+            val factory = ViewModelFactory.getInstance(requireActivity())
+            val viewModel = ViewModelProvider(it, factory)[DetailViewModel::class.java]
+
+            viewModel.pokemonDetail?.observe(requireActivity(), {
+                if (!it.isError) {
+                    val data = it.data
+                    binding.tvGeneration.text = data?.generation?.name?.replace("-", " ")
+                    binding.tvHabitat.text = data?.habitat?.name?.replace("-", " ")
+                    val hatch = data?.hatch_counter.toString()
+                    binding.tvHatchTime.text = "$hatch Cycles"
+                    val rate = data?.capture_rate.toString()
+                    binding.tvCaptureRate.text = "$rate%"
+                    var eggGroup = ""
+                    data?.egg_groups?.forEach {
+                        eggGroup = eggGroup+it.name+"\n"
+                    }
+                    binding.tvEggGroup.text = eggGroup
+                }
+            })
+            viewModel.pokemonForm?.observe(requireActivity(), {
+                if (!it.isError) {
+                    val data = it.data
+                    binding.ivNormal
+                    Glide.with(binding.root.context)
+                        .load(data?.sprites?.front_default)
+                        .into(binding.ivNormal)
+                    binding.ivShiny
+                    Glide.with(binding.root.context)
+                        .load(data?.sprites?.front_shiny)
+                        .into(binding.ivShiny)
+                }
+            })
+
+//            if (id != 0) {
+//                getAbility(id)
+//                getEggGroup(id)
+                getGender(id)
+//            }
         }
     }
 
@@ -113,33 +153,6 @@ class StatsFragment: Fragment() {
             }
 
             override fun onFailure(call: Call<AbilityResponse>, t: Throwable) {
-            }
-        })
-    }
-
-    private fun getImage(name: String) {
-        val retrofit = Retrofit.Builder()
-            .baseUrl("https://pokeapi.co/api/v2/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-        val service = retrofit.create(PokemonService::class.java)
-        service.getForm(name).enqueue(object : Callback<FormResponse> {
-            override fun onResponse(
-                    call: Call<FormResponse>,
-                    response: Response<FormResponse>
-            ) {
-                val imageNormal = response.body()?.sprites?.front_default
-                Glide.with(binding.root.context)
-                    .load(imageNormal)
-                    .into(binding.ivNormal)
-
-                val imageShiny = response.body()?.sprites?.front_shiny
-                Glide.with(binding.root.context)
-                    .load(imageShiny)
-                    .into(binding.ivShiny)
-            }
-
-            override fun onFailure(call: Call<FormResponse>, t: Throwable) {
             }
         })
     }

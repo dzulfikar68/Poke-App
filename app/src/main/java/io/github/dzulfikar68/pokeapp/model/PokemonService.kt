@@ -9,16 +9,18 @@ interface PokemonService {
     fun getPokemon(): Call<PokemonResponse>
 
     @GET("pokemon-species/{id}")
-    fun getPokemonItem(): Call<PokemonItemResponse>
+    fun getPokemonDetail(@Path("id") id: Int): Call<PokemonSpecies>
+
+    @GET("evolution-chain/{id}")
+    fun getEvolutionChain(@Path("id") id: Int): Call<EvolutionsResponse>
+
+    //=============================================================================
 
     @GET("characteristic/{id}")
     fun getPokemonChar(@Path("id") id: Int): Call<CharPokemonResponse>
 
     @GET("pokemon-form/{name}")
     fun getForm(@Path("name") name: String): Call<FormResponse>
-
-    @GET("evolution-chain/{id}")
-    fun getEvolutionChain(@Path("id") id: Int): Call<EvolutionsResponse>
 
     @GET("ability/{id}")
     fun getAbility(@Path("id") id: Int): Call<AbilityResponse>

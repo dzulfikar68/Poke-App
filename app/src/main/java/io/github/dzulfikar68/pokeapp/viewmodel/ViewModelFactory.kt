@@ -26,6 +26,9 @@ class ViewModelFactory private constructor(private val repository: PokemonReposi
             modelClass.isAssignableFrom(HomeViewModel::class.java) -> {
                 return HomeViewModel(repository) as T
             }
+            modelClass.isAssignableFrom(DetailViewModel::class.java) -> {
+                return DetailViewModel(repository) as T
+            }
             else -> throw Throwable("Unknown ViewModel class: " + modelClass.name)
         }
 
