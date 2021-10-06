@@ -1,6 +1,7 @@
 package io.github.dzulfikar68.pokeapp
 
 import android.content.Context
+import androidx.test.espresso.idling.CountingIdlingResource
 import io.github.dzulfikar68.pokeapp.model.PokemonRepository
 import io.github.dzulfikar68.pokeapp.model.PokemonService
 import io.github.dzulfikar68.pokeapp.model.RemoteDataSource
@@ -27,3 +28,16 @@ object RetrofitClient {
 }
 
 fun String.capitalizeWords(): String = split(" ").map { it.capitalize(Locale.getDefault()) }.joinToString(" ")
+
+object EspressoIdlingResource {
+    private const val RESOURCE = "GLOBAL"
+    val idlingResource = CountingIdlingResource(RESOURCE)
+
+    fun increment() {
+        idlingResource.increment()
+    }
+
+    fun decrement() {
+        idlingResource.decrement()
+    }
+}

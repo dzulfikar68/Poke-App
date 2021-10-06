@@ -47,9 +47,8 @@ class HomeActivity : AppCompatActivity() {
             } else {
                 val data = it.data ?: listOf()
                 pokemonAdapter.setList(data)
-                progressDialog.dismiss()
             }
-            progressDialog.hide()
+            progressDialog.dismiss()
         })
     }
 

@@ -74,10 +74,14 @@ class EvolutionsAdapter : RecyclerView.Adapter<EvolutionsAdapter.ViewHolder>() {
                         call: Call<FormResponse>,
                         response: Response<FormResponse>
                 ) {
-                    val image = response.body()?.sprites?.front_default
-                    Glide.with(binding.root.context)
-                        .load(image)
-                        .into(imageView)
+                    try {
+                        val image = response.body()?.sprites?.front_default
+                        Glide.with(binding.root.context)
+                            .load(image)
+                            .into(imageView)
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+                    }
                 }
 
                 override fun onFailure(call: Call<FormResponse>, t: Throwable) {
