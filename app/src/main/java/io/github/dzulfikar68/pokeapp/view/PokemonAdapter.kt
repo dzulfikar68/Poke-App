@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import io.github.dzulfikar68.pokeapp.EspressoIdlingResource
 import io.github.dzulfikar68.pokeapp.capitalizeWords
 import io.github.dzulfikar68.pokeapp.model.FormResponse
 import io.github.dzulfikar68.pokeapp.model.ItemPokemon
@@ -67,6 +68,7 @@ class PokemonAdapter : RecyclerView.Adapter<PokemonAdapter.MessageViewHolder>() 
         }
 
         private fun getImage(name: String) {
+            EspressoIdlingResource.increment()
             val retrofit = Retrofit.Builder()
                 .baseUrl("https://pokeapi.co/api/v2/")
                 .addConverterFactory(GsonConverterFactory.create())
@@ -85,9 +87,11 @@ class PokemonAdapter : RecyclerView.Adapter<PokemonAdapter.MessageViewHolder>() 
                     } catch (e: Exception) {
                         e.printStackTrace()
                     }
+                    EspressoIdlingResource.decrement()
                 }
 
                 override fun onFailure(call: Call<FormResponse>, t: Throwable) {
+                    EspressoIdlingResource.decrement()
                 }
             })
         }

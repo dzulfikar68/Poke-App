@@ -4,7 +4,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.IdlingRegistry
-import androidx.test.espresso.action.ViewActions.click
+import androidx.test.espresso.action.ViewActions.*
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions
 import androidx.test.espresso.matcher.ViewMatchers
@@ -56,14 +56,6 @@ class PokemonInstrumentedTest {
         onView(withId(R.id.rv_list)).perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0, click()))
         onView(withId(R.id.tv_title_ab)).check(matches(isDisplayed()))
         onView(withId(R.id.tv_desc_ab)).check(matches(isDisplayed()))
-        onView(withId(R.id.tv_egg_group)).check(matches(isDisplayed()))
-        onView(withId(R.id.tv_hatch_time)).check(matches(isDisplayed()))
-        onView(withId(R.id.tv_gender)).check(matches(isDisplayed()))
-        onView(withId(R.id.tv_habitat)).check(matches(isDisplayed()))
-        onView(withId(R.id.tv_generation)).check(matches(isDisplayed()))
-        onView(withId(R.id.tv_capture_rate)).check(matches(isDisplayed()))
-        onView(withId(R.id.iv_shiny)).check(matches(isDisplayed()))
-        onView(withId(R.id.iv_normal)).check(matches(isDisplayed()))
     }
 
     @Test

@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import io.github.dzulfikar68.pokeapp.EspressoIdlingResource
 import io.github.dzulfikar68.pokeapp.capitalizeWords
 import io.github.dzulfikar68.pokeapp.databinding.ItemEvolutionsViewBinding
 import io.github.dzulfikar68.pokeapp.model.ChainEvo
@@ -64,6 +65,7 @@ class EvolutionsAdapter : RecyclerView.Adapter<EvolutionsAdapter.ViewHolder>() {
         }
 
         private fun getImage(name: String, imageView: ImageView) {
+            EspressoIdlingResource.increment()
             val retrofit = Retrofit.Builder()
                 .baseUrl("https://pokeapi.co/api/v2/")
                 .addConverterFactory(GsonConverterFactory.create())
@@ -82,9 +84,11 @@ class EvolutionsAdapter : RecyclerView.Adapter<EvolutionsAdapter.ViewHolder>() {
                     } catch (e: Exception) {
                         e.printStackTrace()
                     }
+                    EspressoIdlingResource.decrement()
                 }
 
                 override fun onFailure(call: Call<FormResponse>, t: Throwable) {
+                    EspressoIdlingResource.decrement()
                 }
             })
         }
