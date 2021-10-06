@@ -1,5 +1,6 @@
 package io.github.dzulfikar68.pokeapp.model
 
+import io.github.dzulfikar68.pokeapp.EspressoIdlingResource
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -17,6 +18,7 @@ class RemoteDataSource private constructor(private val services: PokemonService)
     }
 
     fun getPokemonList(callback: PokemonListCallback) {
+        EspressoIdlingResource.increment()
         services.getPokemon().enqueue(object: Callback<PokemonResponse> {
             override fun onResponse(
                     call: Call<PokemonResponse>,
@@ -30,6 +32,7 @@ class RemoteDataSource private constructor(private val services: PokemonService)
                     data = listItem
                 )
                 callback.onPokemonListReceived(res)
+                EspressoIdlingResource.decrement()
             }
             override fun onFailure(call: Call<PokemonResponse>, t: Throwable) {
                 val res = MainResponse<List<ItemPokemon>>(
@@ -38,11 +41,13 @@ class RemoteDataSource private constructor(private val services: PokemonService)
                     data = null
                 )
                 callback.onPokemonListReceived(res)
+                EspressoIdlingResource.decrement()
             }
         })
     }
 
     fun getPokemonDetail(id:Int, callback: PokemonDetailCallback) {
+        EspressoIdlingResource.increment()
         services.getPokemonDetail(id).enqueue(object: Callback<PokemonSpecies> {
             override fun onResponse(
                 call: Call<PokemonSpecies>,
@@ -55,6 +60,7 @@ class RemoteDataSource private constructor(private val services: PokemonService)
                     data = data
                 )
                 callback.onPokemonDetailReceived(res)
+                EspressoIdlingResource.decrement()
             }
             override fun onFailure(call: Call<PokemonSpecies>, t: Throwable) {
                 val res = MainResponse<PokemonSpecies>(
@@ -63,11 +69,13 @@ class RemoteDataSource private constructor(private val services: PokemonService)
                     data = null
                 )
                 callback.onPokemonDetailReceived(res)
+                EspressoIdlingResource.decrement()
             }
         })
     }
 
     fun getPokemonForm(name: String, callback: PokemonFormCallback) {
+        EspressoIdlingResource.increment()
         services.getForm(name).enqueue(object: Callback<FormResponse> {
             override fun onResponse(
                 call: Call<FormResponse>,
@@ -80,6 +88,7 @@ class RemoteDataSource private constructor(private val services: PokemonService)
                     data = data
                 )
                 callback.onPokemonFormReceived(res)
+                EspressoIdlingResource.decrement()
             }
             override fun onFailure(call: Call<FormResponse>, t: Throwable) {
                 val res = MainResponse<FormResponse>(
@@ -88,11 +97,13 @@ class RemoteDataSource private constructor(private val services: PokemonService)
                     data = null
                 )
                 callback.onPokemonFormReceived(res)
+                EspressoIdlingResource.decrement()
             }
         })
     }
 
     fun getPokemonEvolutions(id: Int, callback: PokemonEvolutionsCallback) {
+        EspressoIdlingResource.increment()
         services.getEvolutionChain(id).enqueue(object: Callback<EvolutionsResponse> {
             override fun onResponse(
                 call: Call<EvolutionsResponse>,
@@ -105,6 +116,7 @@ class RemoteDataSource private constructor(private val services: PokemonService)
                     data = data
                 )
                 callback.onPokemonEvolutionsReceived(res)
+                EspressoIdlingResource.decrement()
             }
             override fun onFailure(call: Call<EvolutionsResponse>, t: Throwable) {
                 val res = MainResponse<EvolutionsResponse>(
@@ -113,11 +125,13 @@ class RemoteDataSource private constructor(private val services: PokemonService)
                     data = null
                 )
                 callback.onPokemonEvolutionsReceived(res)
+                EspressoIdlingResource.decrement()
             }
         })
     }
 
     fun getPokemonAbility(id: Int, callback: PokemonAbilityCallback) {
+        EspressoIdlingResource.increment()
         services.getAbility(id).enqueue(object: Callback<AbilityResponse> {
             override fun onResponse(
                 call: Call<AbilityResponse>,
@@ -130,6 +144,7 @@ class RemoteDataSource private constructor(private val services: PokemonService)
                     data = data
                 )
                 callback.onPokemonAbilityReceived(res)
+                EspressoIdlingResource.decrement()
             }
             override fun onFailure(call: Call<AbilityResponse>, t: Throwable) {
                 val res = MainResponse<AbilityResponse>(
@@ -138,11 +153,13 @@ class RemoteDataSource private constructor(private val services: PokemonService)
                     data = null
                 )
                 callback.onPokemonAbilityReceived(res)
+                EspressoIdlingResource.decrement()
             }
         })
     }
 
     fun getPokemonGender(id: Int, callback: PokemonGenderCallback) {
+        EspressoIdlingResource.increment()
         services.getGender(id).enqueue(object: Callback<GenderResponse> {
             override fun onResponse(
                 call: Call<GenderResponse>,
@@ -155,6 +172,7 @@ class RemoteDataSource private constructor(private val services: PokemonService)
                     data = data
                 )
                 callback.onPokemonGenderReceived(res)
+                EspressoIdlingResource.decrement()
             }
             override fun onFailure(call: Call<GenderResponse>, t: Throwable) {
                 val res = MainResponse<GenderResponse>(
@@ -163,6 +181,7 @@ class RemoteDataSource private constructor(private val services: PokemonService)
                     data = null
                 )
                 callback.onPokemonGenderReceived(res)
+                EspressoIdlingResource.decrement()
             }
         })
     }
