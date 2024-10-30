@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="io.github.dzulfikar68.pokeapp">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -11,9 +10,9 @@
         android:roundIcon="@drawable/ic_pokemon"
         android:supportsRtl="true"
         android:theme="@style/Theme.PokeApp">
-        <activity android:name=".view.DetailActivity"/>
-        <activity android:name=".view.HomeActivity"/>
-        <activity android:name=".view.MainActivity">
+        <activity android:name=".view.DetailActivity" android:exported="true"/>
+        <activity android:name=".view.HomeActivity" android:exported="true"/>
+        <activity android:name=".view.MainActivity" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

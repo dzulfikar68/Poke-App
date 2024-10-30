@@ -44,6 +44,7 @@ class PokemonAdapter : RecyclerView.Adapter<PokemonAdapter.MessageViewHolder>() 
     class MessageViewHolder(private val binding: ItemPokemonViewBinding) : RecyclerView.ViewHolder(binding.root) {
         @SuppressLint("SetTextI18n")
         fun bind(item: ItemPokemon) {
+            println("@poke" + item)
             binding.tvTitle.text = item.name?.capitalizeWords()
             var pokemonId = 0
             try {
